@@ -1,5 +1,7 @@
 package com.brainacad.simple;
 
+import java.io.*;
+
 public class Primes {
         private int maxNumber = 0;
 
@@ -30,19 +32,36 @@ public class Primes {
             return data;
         }
 
-        public void printSimple (){
-            printSimple(maxNumber);
+        public String getSimple (){
+            return getSimple(maxNumber);
         }
 
 
-        public void printSimple (int maxNumber){
+        public String getSimple (int maxNumber){
+            StringBuilder builder = new StringBuilder();
             for (int i = 0; i < maxNumber; i++) {
                 if (ifSimple(i)){
                     if (getFirstValueOfInt(i) == 3) {
-                        System.out.print("#");
+                       builder.append('#');   //System.out.print("#");
                     }
-                    System.out.println(i + ";");
+                      builder.append(i + ";" + "\n");       //System.out.println(i + ";");
                 }
+            }
+            return  builder.toString();
+        }
+
+        public void writeSimple (String data){
+            try{
+                FileWriter writer = new FileWriter("NoteSimple.txt", true);
+                // запись результата в файл
+                writer.write(data);
+                writer.append('\n');
+                // закрыть поток
+                writer.flush();
+            }
+            catch(IOException exp){
+
+                System.out.println(exp.getMessage());
             }
         }
 }
