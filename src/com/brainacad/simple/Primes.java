@@ -50,7 +50,7 @@ public class Primes {
             return  builder.toString();
         }
 
-        public void writeSimple (String data){
+        public void writeSimpleToFile(String data){
             try{
                 FileWriter writer = new FileWriter("NoteSimple.txt", true);
                 // запись результата в файл

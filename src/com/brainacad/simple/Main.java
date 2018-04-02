@@ -5,9 +5,9 @@ public class Main {
         Primes primes = new Primes(5000);
         String strSimple = primes.getSimple();
         System.out.println(strSimple);
-        primes.writeSimple(strSimple);
+        primes.writeSimpleToFile(strSimple);
         strSimple = primes.getSimple(10000);
         System.out.println(strSimple);
-        primes.writeSimple(strSimple);
+        primes.writeSimpleToFile(strSimple);
     }
 }
