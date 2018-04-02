@@ -57,7 +57,7 @@ public class Primes {
                 writer.write(data);
                 writer.append('\n');
                 // закрыть поток
-                writer.flush();
+                writer.close();
             }
             catch(IOException exp){
 
