@@ -64,12 +64,11 @@ public class Primes implements IPrimes {
             }
             catch(IOException exp){
 
-                System.out.println(exp.getMessage());
+                System.out.println("Ошибка записи данных в файл!!!");
             }
         }
 
     public String getSimpleNumber() {
-        getSimple();
         return simpleNumber;
     }
 }

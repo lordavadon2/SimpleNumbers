@@ -12,7 +12,7 @@ public class InputValidator implements IInputValidator {
     }
 
     private void checkInputFormat() throws ValidationExaption {
-        Pattern pattern = Pattern.compile("^[^A-Za-z0-9][\\s][^A-Za-z0-9][\\s][0-9][\\s]([0-9])+$");
+        Pattern pattern = Pattern.compile("^[^A-Za-z0-9][\\s][^A-Za-z0-9][\\s][1-9][\\s][1-9]([0-9])+$");
         Matcher matcher = pattern.matcher(this.data);
         if (!matcher.matches()) {throw new ValidationExaption("Заданная строка не соответствует формату...");}
     }
