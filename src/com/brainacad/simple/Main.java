@@ -14,12 +14,12 @@ public class Main {
         System.out.println("Пример:\"; # 3 10000\"");
         String userInput = new Scanner(System.in).nextLine();
         IStringParser parser = new StringParser(userInput, new InputValidator(userInput));
-        Primes primesNumber = new Primes(parser);
+        Primes primes = new Primes(parser);
         try{
             parser.tryParse();
-            primesNumber.getPrimesFromParser();
-            System.out.println(primesNumber.getPrimes());
-            primesNumber.writePrimesToFile(primesNumber.getPrimes());
+            primes.getPrimesFromParser();
+            System.out.println(primes.getPrimes());
+            primes.writePrimesToFile(primes.getPrimes());
         }
         catch (ValidationExaption exc){
             System.out.println("Ошибка валидации: " + exc.getValidationErrorInfo());
