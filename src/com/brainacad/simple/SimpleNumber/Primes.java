@@ -1,13 +1,18 @@
-package com.brainacad.simple;
+package com.brainacad.simple.SimpleNumber;
+
+import com.brainacad.simple.StringParser.IDataParser;
 
 import java.io.*;
 
-public class Primes {
-        private int maxNumber = 0;
+public class Primes implements IPrimes {
+        private String simpleNumber;
+        private IDataParser parser;
 
-    public Primes(int maxNumber) {
-        this.maxNumber = maxNumber;
+    public Primes(IDataParser parser) {
+        this.simpleNumber = "";
+        this.parser = parser;
     }
+
 
     private boolean ifSimple(int data){
             if (data <= 1)
@@ -32,25 +37,23 @@ public class Primes {
             return data;
         }
 
-        public String getSimple (){
-            return getSimple(maxNumber);
-        }
 
-
-        public String getSimple (int maxNumber){
+        @Override
+        public void getSimple (){
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < maxNumber; i++) {
+            for (int i = 0; i < parser.getMaxNumber(); i++) {
                 if (ifSimple(i)){
-                    if (getFirstValueOfInt(i) == 3) {
-                       builder.append('#');   //System.out.print("#");
+                    if (getFirstValueOfInt(i) == parser.getPrefixValue()) {
+                       builder.append(parser.getPrefix());   //System.out.print("#");
                     }
-                      builder.append(i + ";" + "\n");       //System.out.println(i + ";");
+                      builder.append(i + parser.getDelimeter() + "\n");       //System.out.println(i + ";");
                 }
             }
-            return  builder.toString();
+            this.simpleNumber = builder.toString();
         }
 
-        public void writeSimpleToFile(String data){
+        @Override
+        public void writeToFile(String data){
             try{
                 FileWriter writer = new FileWriter("NoteSimple.txt", true);
                 // запись результата в файл
@@ -64,6 +67,11 @@ public class Primes {
                 System.out.println(exp.getMessage());
             }
         }
+
+    public String getSimpleNumber() {
+        getSimple();
+        return simpleNumber;
+    }
 }
 
 
