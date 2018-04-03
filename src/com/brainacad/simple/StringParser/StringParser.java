@@ -1,6 +1,6 @@
 package com.brainacad.simple.StringParser;
 
-public class DataParser implements IDataParser {
+public class StringParser implements IStringParser {
     private String delimeter;
     private String prefix;
     private int prefixValue;
@@ -9,7 +9,7 @@ public class DataParser implements IDataParser {
     private IInputValidator validator;
     private static String separator = " ";
 
-    public DataParser(String userInput, IInputValidator validator) {
+    public StringParser(String userInput, IInputValidator validator) {
 //        tryParse(input);
         this.validator = validator;
         this.userInput = userInput;

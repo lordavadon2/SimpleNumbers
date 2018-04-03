@@ -1,6 +1,6 @@
 package com.brainacad.simple.StringParser;
 
-public interface IDataParser {
+public interface IStringParser {
     boolean tryParse() throws ValidationExaption;
     String getPrefix();
     String getDelimeter();

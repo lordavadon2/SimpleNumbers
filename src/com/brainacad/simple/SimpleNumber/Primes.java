@@ -1,20 +1,20 @@
 package com.brainacad.simple.SimpleNumber;
 
-import com.brainacad.simple.StringParser.IDataParser;
+import com.brainacad.simple.StringParser.IStringParser;
 
 import java.io.*;
 
 public class Primes implements IPrimes {
-        private String simpleNumber;
-        private IDataParser parser;
+        private String simpleNumbers;
+        private IStringParser parser;
 
-    public Primes(IDataParser parser) {
-        this.simpleNumber = "";
+    public Primes(IStringParser parser) {
+        this.simpleNumbers = "";
         this.parser = parser;
     }
 
 
-    private boolean ifSimple(int data){
+    private boolean isSimple(int data){
             if (data <= 1)
                 return false;
             else if (data <= 3)
@@ -39,21 +39,21 @@ public class Primes implements IPrimes {
 
 
         @Override
-        public void getSimple (){
+        public void getPrimesFromParser(){
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < parser.getMaxNumber(); i++) {
-                if (ifSimple(i)){
+                if (isSimple(i)){
                     if (getFirstValueOfInt(i) == parser.getPrefixValue()) {
                        builder.append(parser.getPrefix());   //System.out.print("#");
                     }
                       builder.append(i + parser.getDelimeter() + "\n");       //System.out.println(i + ";");
                 }
             }
-            this.simpleNumber = builder.toString();
+            this.simpleNumbers = builder.toString();
         }
 
         @Override
-        public void writeToFile(String data){
+        public void writePrimesToFile(String data){
             try{
                 FileWriter writer = new FileWriter("NoteSimple.txt", true);
                 // запись результата в файл
@@ -68,8 +68,8 @@ public class Primes implements IPrimes {
             }
         }
 
-    public String getSimpleNumber() {
-        return simpleNumber;
+    public String getPrimes() {
+        return simpleNumbers;
     }
 }
 
